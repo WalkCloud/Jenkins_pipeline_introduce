@@ -26,7 +26,8 @@ pipeline {
             agent { 
                 docker {
                     image 'maven:3-alpine'
-                    args '-v $HOME/.m2:/root/.m2'} 
+                    args '-v $HOME/.m2:/root/.m2'
+                    } 
             }
             steps {
                 echo "开始用mave构建Java代码"
@@ -39,6 +40,7 @@ pipeline {
             agent {
                 docker {
                     image 'docker:latest'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
             steps {
